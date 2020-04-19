@@ -1,6 +1,6 @@
 <?php
 /**
- * WP-China-Yes-Update
+ * Update-Server
  *
  * @copyright  Copyright (c) 2020 - WP-China-Yes
  * @license    http://www.gnu.org/licenses/gpl-3.0.html  GPLv3 License
