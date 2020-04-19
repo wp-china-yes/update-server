@@ -44,10 +44,10 @@ foreach ($plugins as $plugin) {
                     'slug' => 'wp-china-yes',
                     'plugin' => 'wp-china-yes/index.php',
                     'new_version' => NEW_VERSION,
-                    'url' => 'https://wporg.ibadboy.net/plugins/wp-china-yes/',
-                    'package' => 'http://d.w.org.ibadboy.net/plugin/wp-china-yes.' . NEW_VERSION . '.zip',
+                    'url' => 'https://wordpress.org/plugins/wp-china-yes/',
+                    'package' => 'http://downloads.wordpress.org/plugin/wp-china-yes.' . NEW_VERSION . '.zip',
                     'icons' => [
-                        '1x' => 'https://ps.w.org.ibadboy.net/wp-china-yes/assets/icon-128x128.jpg'
+                        '1x' => 'https://ps.w.org/wp-china-yes/assets/icon-128x128.jpg'
                     ],
                     'banners' => [],
                     'banners_rtl' => [],
