@@ -18,21 +18,14 @@ curl_close($ch);
 $plugins = json_decode($_POST['plugins'], true)['plugins'];
 foreach ($plugins as $plugin) {
     if ($plugin['Name'] === 'WP-China-Yes') {
-        $dm = '.';
-        $old_version_list = explode($dm, (string)$plugin['Version']);
-        $now_version_list = explode($dm, (string)NEW_VERSION);
+        $old_version_list = explode('.', (string)$plugin['Version']);
+        $now_version_list = explode('.', (string)NEW_VERSION);
 
         $len = max(count($old_version_list), count($now_version_list));
 
         for ($i = 0; $i < $len; $i++) {
             $old_version_list[$i] = intval(@$old_version_list[$i]);
-            if ($old_version_list[$i] < 0) {
-                $old_version_list[$i] = 0;
-            }
             $now_version_list[$i] = intval(@$now_version_list[$i]);
-            if ($now_version_list[$i] < 0) {
-                $now_version_list[$i] = 0;
-            }
 
             if ($old_version_list[$i] < $now_version_list[$i]) {
                 $response_array = json_decode($response_str, true);
