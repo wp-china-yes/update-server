@@ -23,8 +23,8 @@ foreach ($plugins as $plugin) {
         $verListB = explode($dm, (string)NEW_VERSION);
 
         $len = max(count($verListA), count($verListB));
-        $i = -1;
-        while ($i++ < $len) {
+
+        for ($i = 0; $i < $len; $i++) {
             $verListA[$i] = intval(@$verListA[$i]);
             if ($verListA[$i] < 0) {
                 $verListA[$i] = 0;
