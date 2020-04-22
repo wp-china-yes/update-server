@@ -19,22 +19,22 @@ $plugins = json_decode($_POST['plugins'], true)['plugins'];
 foreach ($plugins as $plugin) {
     if ($plugin['Name'] === 'WP-China-Yes') {
         $dm = '.';
-        $verListA = explode($dm, (string)$plugin['Version']);
-        $verListB = explode($dm, (string)NEW_VERSION);
+        $old_version_list = explode($dm, (string)$plugin['Version']);
+        $now_version_list = explode($dm, (string)NEW_VERSION);
 
-        $len = max(count($verListA), count($verListB));
+        $len = max(count($old_version_list), count($now_version_list));
 
         for ($i = 0; $i < $len; $i++) {
-            $verListA[$i] = intval(@$verListA[$i]);
-            if ($verListA[$i] < 0) {
-                $verListA[$i] = 0;
+            $old_version_list[$i] = intval(@$old_version_list[$i]);
+            if ($old_version_list[$i] < 0) {
+                $old_version_list[$i] = 0;
             }
-            $verListB[$i] = intval(@$verListB[$i]);
-            if ($verListB[$i] < 0) {
-                $verListB[$i] = 0;
+            $now_version_list[$i] = intval(@$now_version_list[$i]);
+            if ($now_version_list[$i] < 0) {
+                $now_version_list[$i] = 0;
             }
 
-            if ($verListA[$i] < $verListB[$i]) {
+            if ($old_version_list[$i] < $now_version_list[$i]) {
                 $response_array = json_decode($response_str, true);
                 $response_array['plugins']['wp-china-yes/index.php'] = [
                     'id' => 'w.org/plugins/wp-china-yes',
