@@ -4,7 +4,6 @@
  *
  * @copyright  Copyright (c) 2020 - WP-China-Yes
  * @license    http://www.gnu.org/licenses/gpl-3.0.html  GPLv3 License
- * @updated    2020/4/19
  */
 define('NEW_VERSION', '2.1.0');
 
