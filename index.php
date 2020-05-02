@@ -18,37 +18,27 @@ curl_close($ch);
 $plugins = json_decode($_POST['plugins'], true)['plugins'];
 foreach ($plugins as $plugin) {
     if ($plugin['Name'] === 'WP-China-Yes') {
-        $old_version_list = explode('.', (string)$plugin['Version']);
-        $now_version_list = explode('.', (string)NEW_VERSION);
+        if (version_compare(NEW_VERSION, $plugin['Version'], '>')) {
+            $response_array = json_decode($response_str, true);
+            $response_array['plugins']['wp-china-yes/index.php'] = [
+                'id' => 'w.org/plugins/wp-china-yes',
+                'slug' => 'wp-china-yes',
+                'plugin' => 'wp-china-yes/index.php',
+                'new_version' => NEW_VERSION,
+                'url' => 'https://wordpress.org/plugins/wp-china-yes/',
+                'package' => 'http://downloads.wordpress.org/plugin/wp-china-yes.' . NEW_VERSION . '.zip',
+                'icons' => [
+                    '1x' => 'https://ps.w.org/wp-china-yes/assets/icon-128x128.jpg'
+                ],
+                'banners' => [],
+                'banners_rtl' => [],
+                'tested' => '5.4.1',
+                'requires_php' => '5.6',
+                'compatibility' => []
+            ];
 
-        $len = max(count($old_version_list), count($now_version_list));
-
-        for ($i = 0; $i < $len; $i++) {
-            $old_version_list[$i] = intval(@$old_version_list[$i]);
-            $now_version_list[$i] = intval(@$now_version_list[$i]);
-
-            if ($old_version_list[$i] < $now_version_list[$i]) {
-                $response_array = json_decode($response_str, true);
-                $response_array['plugins']['wp-china-yes/index.php'] = [
-                    'id' => 'w.org/plugins/wp-china-yes',
-                    'slug' => 'wp-china-yes',
-                    'plugin' => 'wp-china-yes/index.php',
-                    'new_version' => NEW_VERSION,
-                    'url' => 'https://wordpress.org/plugins/wp-china-yes/',
-                    'package' => 'http://downloads.wordpress.org/plugin/wp-china-yes.' . NEW_VERSION . '.zip',
-                    'icons' => [
-                        '1x' => 'https://ps.w.org/wp-china-yes/assets/icon-128x128.jpg'
-                    ],
-                    'banners' => [],
-                    'banners_rtl' => [],
-                    'tested' => '5.4',
-                    'requires_php' => '5.6',
-                    'compatibility' => []
-                ];
-
-                echo json_encode($response_array, JSON_UNESCAPED_UNICODE);
-                exit;
-            }
+            echo json_encode($response_array, JSON_UNESCAPED_UNICODE);
+            exit;
         }
     }
 }
