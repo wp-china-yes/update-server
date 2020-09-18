@@ -5,7 +5,7 @@
  * @copyright  Copyright (c) 2020 - WP-China-Yes
  * @license    http://www.gnu.org/licenses/gpl-3.0.html  GPLv3 License
  */
-define('NEW_VERSION', '2.1.0');
+define('NEW_VERSION', '3.1.3');
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://api.wordpress.org/plugins/update-check/1.1/');
@@ -27,13 +27,13 @@ foreach ($plugins as $key => $plugin) {
                 'plugin' => 'wp-china-yes/'.$plugin_index,
                 'new_version' => NEW_VERSION,
                 'url' => 'https://wordpress.org/plugins/wp-china-yes/',
-                'package' => 'http://downloads.wordpress.org/plugin/wp-china-yes.' . NEW_VERSION . '.zip',
+                'package' => 'https://a1.wp-china-yes.net/apps/wp-china-yes.zip',
                 'icons' => [
                     '1x' => 'https://ps.w.org/wp-china-yes/assets/icon-128x128.jpg'
                 ],
                 'banners' => [],
                 'banners_rtl' => [],
-                'tested' => '5.4.1',
+                'tested' => '5.5.1',
                 'requires_php' => '5.6',
                 'compatibility' => []
             ];
