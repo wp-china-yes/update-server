@@ -16,14 +16,15 @@ $response_str = curl_exec($ch);
 curl_close($ch);
 
 $plugins = json_decode($_POST['plugins'], true)['plugins'];
-foreach ($plugins as $plugin) {
+foreach ($plugins as $key => $plugin) {
+    $plugin_index = explode('/', $key)[1];
     if ($plugin['Name'] === 'WP-China-Yes') {
         if (version_compare(NEW_VERSION, $plugin['Version'], '>')) {
             $response_array = json_decode($response_str, true);
-            $response_array['plugins']['wp-china-yes/index.php'] = [
+            $response_array['plugins']['wp-china-yes/'.$plugin_index] = [
                 'id' => 'w.org/plugins/wp-china-yes',
                 'slug' => 'wp-china-yes',
-                'plugin' => 'wp-china-yes/index.php',
+                'plugin' => 'wp-china-yes/'.$plugin_index,
                 'new_version' => NEW_VERSION,
                 'url' => 'https://wordpress.org/plugins/wp-china-yes/',
                 'package' => 'http://downloads.wordpress.org/plugin/wp-china-yes.' . NEW_VERSION . '.zip',
